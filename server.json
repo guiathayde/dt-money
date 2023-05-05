@@ -6,7 +6,7 @@
       "type": "income",
       "category": "Venda",
       "price": 14000,
-      "createdAt": "2023-04-025T00:00:00.000Z"
+      "createdAt": "2023-05-05T21:10:17.577Z"
     },
     {
       "id": 2,
@@ -14,7 +14,15 @@
       "type": "outcome",
       "category": "Alimentação",
       "price": 59,
-      "createdAt": "2023-04-026T00:00:00.000Z"
+      "createdAt": "2023-05-05T21:10:17.577Z"
+    },
+    {
+      "id": 3,
+      "description": "Ignite Rocketseat",
+      "type": "outcome",
+      "category": "Educação",
+      "price": 1980,
+      "createdAt": "2023-05-05T21:10:17.577Z"
     }
   ]
 }
