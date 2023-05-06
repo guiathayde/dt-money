@@ -1,0 +1,14 @@
+{
+  "extends": "@rocketseat/eslint-config/react",
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "endOfLine": "auto"
+      }
+    ],
+    "no-unused-vars": "off",
+    "react-refresh/only-export-components": "off"
+  }
+}
