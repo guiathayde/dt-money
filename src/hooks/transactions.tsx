@@ -1,10 +1,5 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { ReactNode, useEffect, useState } from 'react';
+import { createContext } from 'use-context-selector';
 
 import { api } from '../lib/axios';
 
@@ -27,7 +22,7 @@ interface TransactionsProviderProps {
   children: ReactNode;
 }
 
-const TransactionsContext = createContext<TransactionsContextData>(
+export const TransactionsContext = createContext<TransactionsContextData>(
   {} as TransactionsContextData
 );
 
@@ -75,16 +70,4 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       {children}
     </TransactionsContext.Provider>
   );
-}
-
-export function useTransactions() {
-  const context = useContext(TransactionsContext);
-
-  if (!context) {
-    throw new Error(
-      'useTransactions must be used within an TransactionsProvider'
-    );
-  }
-
-  return context;
 }

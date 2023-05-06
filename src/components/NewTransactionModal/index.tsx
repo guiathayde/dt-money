@@ -3,8 +3,9 @@ import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
 import * as z from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useContextSelector } from 'use-context-selector';
 
-import { useTransactions } from '../../hooks/transactions';
+import { TransactionsContext } from '../../hooks/transactions';
 
 import {
   Overlay,
@@ -30,7 +31,10 @@ interface NewTransactionModalProps {
 export function NewTransactionModal({
   setVisibility,
 }: NewTransactionModalProps) {
-  const { createTransaction } = useTransactions();
+  const createTransaction = useContextSelector(
+    TransactionsContext,
+    (context) => context.createTransaction
+  );
   const {
     control,
     register,
