@@ -4,6 +4,8 @@ import * as z from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { useTransactions } from '../../hooks/transactions';
+
 import {
   Overlay,
   Content,
@@ -21,20 +23,30 @@ const newTransactionFormSchema = z.object({
 
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
-export function NewTransactionModal() {
+interface NewTransactionModalProps {
+  setVisibility: (visibility: boolean) => void;
+}
+
+export function NewTransactionModal({
+  setVisibility,
+}: NewTransactionModalProps) {
+  const { createTransaction } = useTransactions();
   const {
     control,
     register,
     handleSubmit,
+    reset,
     formState: { isSubmitting },
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
   });
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await createTransaction(data);
 
-    console.log('handleNewTransaction', data);
+    reset();
+
+    setVisibility(false);
   }
 
   return (
